@@ -12,6 +12,7 @@ fun main() {
     val mutableIntList1: MutableList<Int> = ArrayList()                     // ArrayList
     val mutableIntList2: MutableList<Int> = mutableListOf(2,6,8)            // ArrayList
     val mutableIntLinkedList2: MutableList<Int> = mutableListOf(2,6,8)      // LinkedList
+    val intList = (0..100).toList()                                   // список от 0 до 100
     mutableIntList1.add(5)              // MutableList -> изменяемая коллекция
     mutableIntList2.add(5)              // MutableList -> изменяемая коллекция
     mutableIntLinkedList2.add(10)       // MutableList -> изменяемая коллекция
