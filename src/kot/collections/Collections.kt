@@ -1,4 +1,4 @@
-package kot
+package kot.collections
 
 fun main() {
     /** массив */
@@ -28,5 +28,17 @@ fun main() {
 //    immutableMap.add(1, "test")   // ошибка компиляции, неизменяемая коллекция
     val mutableMap: MutableMap<Int, String> = HashMap()
     mutableMap.put(1,"test")        // MutableMap -> изменяемая коллекция
+
+    val immutableMap2 = mapOf(
+        "key1" to 1,                // ключ/значение указываются через 'to'
+        "key2" to 2,
+        "key3" to 3
+    )
+
+    val immutableMap3 = mapOf(
+        Pair("key1", 1),            // ключ/значение указываются в Pair
+        Pair("key2", 2),
+        Pair("key3", 3)
+    )
 
 }

@@ -1,4 +1,4 @@
-package kot.FunctionalProgramming
+package kot.collections
 
 fun main() {
     val size = 20
