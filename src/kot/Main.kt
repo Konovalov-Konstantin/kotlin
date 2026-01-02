@@ -32,4 +32,59 @@ fun main() {
 
     /** оператор элвиса '?:'  */
     val lenght = surname?.length ?: 0  // если surname.length = null, в lenght присвоится 0
+
+
+
+
+    /** Создать метод, который принимает Map (ключ - название месяца, значение - массив чисел (выручка за каждую неделю) и выводит отчет:
+     * Средняя выручка в неделю
+     * Средняя выручка в месяц
+     * Минимальная и максимальная выручки в месяц с названиями месяцев */
+    val map = mapOf(
+        "Январь" to listOf(100, 100, 200, 200),
+        "Февраль" to listOf(200, 300, 400, 400),
+        "Март" to listOf(500, -100, 600, 600),
+        "Апрель" to listOf(700, 800, 900, 900),
+    )
+
+    printInfo(map)
+}
+
+
+
+fun printInfo(data: Map<String, List<Int>>) {
+    val arrayList: MutableList<Int> = ArrayList()
+
+    for (i in 0..<data.size) {
+        data.values.forEach { array -> arrayList.add(array[i]) }
+        println("Средняя выручка за ${i + 1} неделю: ${arrayList.average().toInt()}")
+    }
+
+    data.map { x ->
+        println("Средняя выручка за ${x.key}: ${x.value.average()}")
+    }
+
+    var indexArrayContainsMaxElement = 0
+    var maxElement = 0
+    var indexArrayContainsMinElement = 0
+    var minElement = Int.MAX_VALUE
+    var i = 0
+
+    data.values
+        .filter { arr -> arr.all { element -> element > 0 } }
+        .map { array ->
+            val max = array.max()
+            val min = array.min()
+            if (max > maxElement) {
+                maxElement = max
+                indexArrayContainsMaxElement = i
+            }
+            if (min < minElement) {
+                minElement = min
+                indexArrayContainsMinElement = i
+            }
+            i++
+        }
+    println("Максимальная выручка: $maxElement в ${data.keys.elementAt(indexArrayContainsMaxElement)} месяце")
+    println("Минимальная выручка: $minElement в ${data.keys.elementAt(indexArrayContainsMinElement)} месяце")
 }
