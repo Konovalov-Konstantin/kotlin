@@ -17,6 +17,16 @@ fun main() {
 
     val employee = Employee("Alex", "HR", 2020)
     employee.printInfo()
+
+    val student1 = Student("Petr","Petrov",20)
+    val student2 = Student("Petr","Petrov",20)
+    println(student1)
+    println(student1 == student2)   //  '==' сравнение объектов аналогично equals в java
+    println(student1 === student2)  //  '===' сравнение ссылок аналогично '==' в java
+
+    /** деструктор - позволяет вытаскивать из объекта его поля с присвоенными значениями (для классов, помеченных 'data') */
+    val(name:String, lastName:String, id:Int) = student1
+    println("name: $name, lastName: $lastName, id: $id")
 }
 
 /** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
