@@ -13,4 +13,11 @@ fun main() {
     println(russia)     // name='Russia', population=150000000
     println(poland)     // name='', population=0
     println(canada)     // name='', population=30000000
+
+
+    val employee = Employee("Alex", "HR", 2020)
+    employee.printInfo()
 }
+
+/** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
+fun Employee.printInfo(): Unit = println("name: ${this.name}, position: ${this.position}, experience: ${this.experience}")
