@@ -27,6 +27,14 @@ fun main() {
     /** деструктор - позволяет вытаскивать из объекта его поля с присвоенными значениями (для классов, помеченных 'data') */
     val(name:String, lastName:String, id:Int) = student1
     println("name: $name, lastName: $lastName, id: $id")
+
+    /** наследование */
+    val animal = Animal("animal", 10, "sea")
+    val dog = Dog(15)
+    println(animal)
+    println(animal.eat())
+    println(dog)
+    println(dog.eat())
 }
 
 /** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
