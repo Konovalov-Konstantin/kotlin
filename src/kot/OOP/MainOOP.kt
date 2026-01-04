@@ -35,6 +35,27 @@ fun main() {
     println(animal.eat())
     println(dog)
     println(dog.eat())
+
+    /** абстрактный класс и интерфейс */
+    val workers = mutableListOf<Worker>()
+    workers.add(Seller("Petr",30))
+    workers.add(Seller("Alex",33))
+    workers.add(Director("Bob",40))
+
+    for(worker in workers) {
+        worker.work()
+//        worker.clean()            // ошибка компиляции (не все worker реализуют интерфейс Cleaner)
+        if (worker is Cleaner) {    // 'is' - проверка, реализует ли worker интерфейс Cleaner (аналог instanceOf)
+            worker.clean()          // Smart Cast - автоматическое приведение типа к типу Cleaner, метод clean становится доступен
+        }
+    }
+    val cleaners = workers
+        .filter { it is Cleaner }   // 'is' - проверка, реализует ли объект (it) интерфейс Cleaner (аналог instanceOf)
+        .map { it as Cleaner }      // 'as' - явное приведение объекта (it) к типу Cleaner
+
+    for (cleaner in cleaners) {
+        println("*** ${cleaner.clean()}")
+    }
 }
 
 /** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
