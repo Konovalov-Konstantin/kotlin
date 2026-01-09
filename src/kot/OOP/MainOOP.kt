@@ -56,7 +56,21 @@ fun main() {
     for (cleaner in cleaners) {
         println("*** ${cleaner.clean()}")
     }
+
+    /** Абстрактный класс
+     * если метод используется 1 раз и нет смысла создавать класс, используется анонимный класс
+     */
+    clean(object : Cleaner {    // object - объект анонимного класса
+        override fun clean() {
+            println("реализация метода clean в абстрактном классе")
+        }
+    })
 }
 
 /** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
 fun Employee.printInfo(): Unit = println("name: ${this.name}, position: ${this.position}, experience: ${this.experience}")
+
+
+fun clean(cleaner: Cleaner) {
+    cleaner.clean()
+}
