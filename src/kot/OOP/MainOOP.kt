@@ -69,6 +69,10 @@ fun main() {
     clean {
         println("вызов inline функции без создания объекта анонимного класса")
     }
+
+
+    println(Calculate.square(6))
+    println(Calculate.lengthOfCircle(5f))
 }
 
 /** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
