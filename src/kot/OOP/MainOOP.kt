@@ -56,7 +56,29 @@ fun main() {
     for (cleaner in cleaners) {
         println("*** ${cleaner.clean()}")
     }
+
+    /** Анонимный класс
+     * если метод используется 1 раз и нет смысла создавать класс, используется анонимный класс
+     */
+    clean(object : Cleaner {    // object - объект анонимного класса
+        override fun clean() {
+            println("реализация метода clean в абстрактном классе")
+        }
+    })
+
+    clean {
+        println("вызов inline функции без создания объекта анонимного класса")
+    }
 }
 
 /** extension-функция, расширяющая класс Employee (метод, написанный вне класса Employee) */
 fun Employee.printInfo(): Unit = println("name: ${this.name}, position: ${this.position}, experience: ${this.experience}")
+
+
+fun clean(cleaner: Cleaner) {
+    cleaner.clean()
+}
+
+inline fun clean(cleanFunction: () -> Unit) {   // функция высшего порядка (ф-ция, которая принимает в качестве параметра другую функцию)
+    cleanFunction()                             // такие функции лучше обозначать inline, т.к. при их вызове не будет создаваться объект анонимного класса и производительность будет лучше
+}
